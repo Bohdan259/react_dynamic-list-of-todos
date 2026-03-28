@@ -27,7 +27,7 @@ export const App: React.FC = () => {
       return todo.completed === true;
     }
 
-    return todos;
+    return true;
   });
 
   const visibleList = filterList.filter(todo => {

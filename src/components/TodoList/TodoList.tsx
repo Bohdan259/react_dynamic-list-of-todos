@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Todo } from '../../types/Todo';
+import classNames from 'classnames';
 
 type Props = {
   todos: Todo[];
@@ -43,9 +44,9 @@ export const TodoList = React.memo<Props>(
               </td>
               <td className="is-vcentered is-expanded">
                 <p
-                  className={
-                    todo.completed ? 'has-text-success' : 'has-text-danger'
-                  }
+                  className={classNames('has-text-success', {
+                    'has-text-danger': !todo.completed,
+                  })}
                 >
                   {todo.title}
                 </p>
@@ -59,11 +60,10 @@ export const TodoList = React.memo<Props>(
                 >
                   <span className="icon">
                     <i
-                      className={
-                        todo.id === selectedTodo?.id
-                          ? 'far fa-eye-slash'
-                          : 'far fa-eye'
-                      }
+                      className={classNames('far', {
+                        'fa-eye-slash': todo.id === selectedTodo?.id,
+                        'fa-eye': todo.id !== selectedTodo?.id,
+                      })}
                     />
                   </span>
                 </button>

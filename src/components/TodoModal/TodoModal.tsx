@@ -23,8 +23,6 @@ export const TodoModal = React.memo<Props>(
           .catch(() => setErrorMessage(true))
           .finally(() => setLoading(false));
       }
-
-      return;
     }, [selectedTodo]);
 
     const handleButtonCloseModal = useCallback(() => {
